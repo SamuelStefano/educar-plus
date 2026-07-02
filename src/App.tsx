@@ -1,5 +1,6 @@
 import { useState } from "react";
 import UseEffectAula from "./UseEffectAula";
+import PraticaAula from "./PraticaAula";
 
 type Tarefa = {
   id: number;
@@ -134,7 +135,7 @@ function CrudPage() {
 // ─────────────────────────────────────────────
 function App() {
   // "pagina" controla qual aula está visível
-  const [pagina, setPagina] = useState<"crud" | "useeffect">("useeffect");
+  const [pagina, setPagina] = useState<"crud" | "useeffect" | "pratica">("pratica");
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -160,12 +161,23 @@ function App() {
         >
           Aula 2: useEffect
         </button>
+        <button
+          onClick={() => setPagina("pratica")}
+          className={`rounded px-4 py-2 text-sm transition ${
+            pagina === "pratica"
+              ? "bg-white text-black"
+              : "border border-white/20 hover:bg-white/10"
+          }`}
+        >
+          Aula 3: Prática
+        </button>
       </nav>
 
       {/* Conteúdo da aula selecionada */}
       <div className="p-8">
         {pagina === "crud" && <CrudPage />}
         {pagina === "useeffect" && <UseEffectAula />}
+        {pagina === "pratica" && <PraticaAula />}
       </div>
     </div>
   );
