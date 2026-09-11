@@ -1,73 +1,50 @@
-# React + TypeScript + Vite
+# Educar+ — ToDo List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto da turma: uma lista de tarefas em React.
 
-Currently, two official plugins are available:
+## Como rodar
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Baixe o projeto:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/SamuelStefano/educar-plus.git
+cd educar-plus
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Instale as dependências (só na primeira vez):
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm install
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. Ligue o servidor:
+
+```bash
+npm run dev
+```
+
+4. Abra no navegador: http://localhost:5173
+
+## Onde mexer
+
+Tudo acontece em **`src/App.tsx`**. Abra esse arquivo no Cursor e leia os
+comentários — eles têm as dicas do que fazer.
+
+## Deu erro?
+
+| Mensagem no terminal | O que aconteceu | Solução |
+|---|---|---|
+| `no such file or directory, open '.../package.json'` | Terminal na pasta errada | `cd educar-plus` e tente de novo |
+| `'vite' is not recognized` / `vite: not found` | Faltou instalar | `npm run install` não existe: rode `npm install` |
+| `Port 5173 is in use` | Já tem um `npm run dev` aberto | Feche o outro terminal ou use o link novo que ele mostra |
+| Tela branca no navegador | Erro no código | Abra o console (F12) e leia o arquivo e a linha do erro |
+| `Each child in a list should have a unique "key" prop` | Faltou o `key` no `.map()` | Adicione `key={...}` no elemento que se repete |
+| `class` não funciona | Em React é `className` | Troque `class=` por `className=` |
+
+## Comandos do Git que a gente usa
+
+```bash
+git add .
+git commit -m "minha lista de tarefas"
+git push
 ```
