@@ -25,6 +25,11 @@ npm run dev
 
 4. Abra no navegador: http://localhost:5173
 
+## Aulas
+
+- Aula 1 — a aparência da lista: dicas nos comentários de `src/App.tsx`
+- Aula 2 — fazendo a lista funcionar: [`AULA-2.md`](AULA-2.md)
+
 ## Onde mexer
 
 Tudo acontece em **`src/App.tsx`**. Abra esse arquivo no Cursor e leia os
