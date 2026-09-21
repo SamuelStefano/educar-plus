@@ -7,6 +7,45 @@ Hoje eles vão **funcionar**. Tudo continua em **`src/App.tsx`**.
 
 ---
 
+## Não fez a aparência? Comece por aqui
+
+Apague tudo do `src/App.tsx` e digite (não cole!) este ponto de partida:
+
+```tsx
+function App() {
+  const tasks = ["Estudar React", "Fazer exercício", "Beber água"];
+
+  return (
+    <div className="min-h-screen bg-black p-8 text-white">
+      <h1 className="text-2xl font-bold">Minhas tarefas</h1>
+
+      <div className="mt-4 flex gap-2">
+        <input
+          className="flex-1 rounded border border-gray-600 bg-gray-900 px-3 py-2"
+          placeholder="O que você precisa fazer?"
+        />
+        <button className="rounded bg-blue-600 px-4 py-2">Adicionar</button>
+      </div>
+
+      <ul className="mt-4 space-y-2">
+        {tasks.map((task) => (
+          <li key={task} className="flex items-center justify-between rounded border border-gray-700 p-3">
+            <span>{task}</span>
+            <button className="rounded bg-red-600 px-3 py-1 text-sm">Remover</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Salvou e a tela mostrou título, campo, botão e três tarefas? Pode seguir.
+
+---
+
 ## A ideia principal: a tela é uma foto da lista
 
 O React desenha a tela olhando a lista de tarefas. Para a tela mudar, você
