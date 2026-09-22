@@ -27,13 +27,14 @@ npm run dev
 
 ## Aulas
 
-- Aula 1 — a aparência da lista: dicas nos comentários de `src/App.tsx`
+- Aula 1 — a aparência da lista
 - Aula 2 — fazendo a lista funcionar: [`AULA-2.md`](AULA-2.md)
+- Aula 3 — marcar como feita e salvar no navegador: [`AULA-3.md`](AULA-3.md)
 
 ## Onde mexer
 
-Tudo acontece em **`src/App.tsx`**. Abra esse arquivo no Cursor e leia os
-comentários — eles têm as dicas do que fazer.
+Tudo acontece em **`src/App.tsx`**. Ele já começa com a lista da aula 2
+funcionando. O passo a passo de hoje está no `AULA-3.md`.
 
 ## Deu erro?
 
