@@ -3,31 +3,51 @@
  *  EDUCAR+ — Projeto: ToDo List (lista de tarefas)
  * ═══════════════════════════════════════════════════════════════
  *
- *  Este é o ponto de partida da AULA 3: a lista da aula 2 funcionando
- *  (adicionar e remover).
+ *  Este é o ponto de partida da AULA 4: a lista da aula 3 funcionando
+ *  (fichas, marcar como feita e salvar no navegador).
  *
  *  Hoje a missão é:
- *    1. Transformar cada tarefa numa "ficha" (um objeto).
- *    2. Marcar uma tarefa como feita.
- *    3. Salvar a lista no navegador, para ela sobreviver ao F5.
+ *    1. Editar o texto de uma tarefa com dois cliques.
+ *    2. Filtrar a lista: Todas / Ativas / Feitas.
+ *    3. Mostrar quantas tarefas ainda faltam.
  *
- *  O passo a passo está em AULA-3.md. Leia lá primeiro.
+ *  O passo a passo está em AULA-4.md. Leia lá primeiro.
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+type Task = { id: number; text: string; done: boolean };
+
+function loadTasks(): Task[] {
+  const saved = localStorage.getItem("tasks");
+  if (saved === null) {
+    return [{ id: 1, text: "Estudar React", done: false }];
+  }
+  return JSON.parse(saved);
+}
 
 function App() {
-  const [tasks, setTasks] = useState(["Estudar React", "Fazer exercício", "Beber água"]);
+  const [tasks, setTasks] = useState<Task[]>(loadTasks);
   const [text, setText] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   function addTask() {
     if (text.trim() === "") return;
-    setTasks([...tasks, text]);
+    setTasks([...tasks, { id: Date.now(), text: text, done: false }]);
     setText("");
   }
 
-  function removeTask(index: number) {
-    setTasks(tasks.filter((_, i) => i !== index));
+  function removeTask(id: number) {
+    setTasks(tasks.filter((task) => task.id !== id));
+  }
+
+  function toggleTask(id: number) {
+    setTasks(
+      tasks.map((task) => (task.id === id ? { ...task, done: !task.done } : task))
+    );
   }
 
   return (
@@ -46,10 +66,15 @@ function App() {
       </div>
 
       <ul className="mt-4 flex flex-col gap-2">
-        {tasks.map((task, index) => (
-          <li key={task} className="flex items-center gap-2">
-            <span>{task}</span>
-            <button className="text-red-400" onClick={() => removeTask(index)}>
+        {tasks.map((task) => (
+          <li key={task.id} className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={task.done}
+              onChange={() => toggleTask(task.id)}
+            />
+            <span className={task.done ? "text-gray-500 line-through" : ""}>{task.text}</span>
+            <button className="text-red-400" onClick={() => removeTask(task.id)}>
               Remover
             </button>
           </li>
