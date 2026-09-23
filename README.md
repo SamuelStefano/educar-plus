@@ -31,11 +31,12 @@ npm run dev
 - Aula 2 — fazendo a lista funcionar: [`AULA-2.md`](AULA-2.md)
 - Aula 3 — marcar como feita e salvar no navegador: [`AULA-3.md`](AULA-3.md)
 - Aula 4 — editar tarefas e filtrar a lista: [`AULA-4.md`](AULA-4.md)
+- Aula 5 — quebrando o app em peças (componentes): [`AULA-5.md`](AULA-5.md)
 
 ## Onde mexer
 
-Tudo acontece em **`src/App.tsx`**. Ele já começa com a lista da aula 3
-funcionando. O passo a passo de hoje está no `AULA-4.md`.
+Tudo acontece em **`src/App.tsx`**. Ele já começa com a lista da aula 4
+funcionando. O passo a passo de hoje está no `AULA-5.md`.
 
 ## Deu erro?
 
